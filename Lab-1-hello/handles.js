@@ -8,7 +8,7 @@ const content = '<!DOCTYPE html>' +
 '    </head>' + 
 '    <body>' +
 '         <h2>Welcome to our page, you\'ll see a link below to go to our hello page !</h2>' +
-'           <p>In this page, you can write your name in the url and the page will welcome you like you deserve'+
+'           <p>In the next page, you can write your name in the url and the page will welcome you like you deserve'+
 '           <p>Click on this link => <a href="hello/Ramzi">hello</a></p>'
 '    </body>' +
 '</html>'

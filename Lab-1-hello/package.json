@@ -5,12 +5,13 @@
   "main": "Hello.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/nodemon "
+    "dev": "./node_modules/.bin/nodemon Hello.js"
   },
   "author": "Ramzi AGOUGILE",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "ejs": "^3.0.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
