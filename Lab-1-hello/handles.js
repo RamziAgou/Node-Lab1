@@ -1,5 +1,4 @@
-const qs = require('querystring')
-const url = require('url')
+const express = require("express"), app = express();
 
 const content = '<!DOCTYPE html>' +
 '<html>' +
@@ -10,7 +9,7 @@ const content = '<!DOCTYPE html>' +
 '    <body>' +
 '         <h2>Welcome to our page, you\'ll see a link below to go to our hello page !</h2>' +
 '           <p>In this page, you can write your name in the url and the page will welcome you like you deserve'+
-'           <p>Click on this link => <a href="hello?name=Ramzi">hello</a></p>'
+'           <p>Click on this link => <a href="hello/Ramzi">hello</a></p>'
 '    </body>' +
 '</html>'
 
@@ -26,26 +25,18 @@ const content2 = '<html>' +
 '</html>'
 
 module.exports = {
-    serverHandle: function (req, res) {
-        const route = url.parse(req.url)
-        const path = route.pathname
-        const params = qs.parse(route.query)
+    normalPath: (req, res) => {
+            res.send(content);
+            res.end();
+    },
 
-
-
-        if (path === '/') {
-            res.write(content);
-        } else if (path === '/hello' && 'name' in params) {
-            if (params.name === 'Ramzi') {
-                res.write(content2);
-            } else {
-                res.write('Hello ' + params.name);
-            }
-        } else {
-            res.writeHead(404, { 'Content-Type': 'text/html' });
-            res.write('Error you must write a name in the url like hello/?name=YourName');
+    helloPath : (req, res) => {
+        if(req.params.name === 'Ramzi'){
+            res.send(content2);
+            res.end();
         }
-
-        res.end();
+        else{
+            res.end('Hello '+req.params.name);
+        }
     }
 }
